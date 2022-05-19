@@ -5,9 +5,10 @@
       <map>
         <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/drawable/edit_text_style.xml" value="0.2115" />
         <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2115" />
-        <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/activity_login_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/edittextstyle.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/BlackPL/Documents/Development/flutter/LaptopStore/app/src/main/res/layout/fragment_first.xml" value="0.1" />

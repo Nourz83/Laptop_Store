@@ -63,14 +63,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    void addUser(User user) {
+    public boolean addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = ?" , new String[]{user.getUserName()});
+        if(cursor.getCount() > 0)
+        {
+            db.close();
+            return false;
+        }
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", user.getUserName());
         contentValues.put("password", user.getPassword());
         contentValues.put("name", user.getName());
-        db.insert(userTable, null, contentValues);
+        long l = db.insert(userTable, null, contentValues);
+        System.out.println(l);
         db.close();
+        return true;
     }
 
     Laptop getLaptopById(int id) {
@@ -120,15 +128,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
     }
 
-    User getUser(User user) {
+    public User getUser(User user) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + userTable + "WHERE username = " + user.getName() + " , password = " + user.getPassword(), null);
-        if (cursor.moveToFirst()) {
+        String[] args = {user.getUserName().toString() , user.getPassword().toString()};
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Users where username = ? and password = ?", args );
+        System.out.println(user.getUserName());
+        System.out.println(user.getPassword());
+        System.out.println(cursor.getCount());
+        //System.out.println("SELECT * FROM " + userTable + " WHERE username = " + user.getName() + " AND password = " + user.getPassword());
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
             User user1 = new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
             return user1;
         } else {
             return null;
         }
+    }
+    public void printAllUser()
+    {
+        Cursor cursor = this.getWritableDatabase().rawQuery("SELECT * FROM Users" , null);
+        cursor.moveToFirst();
+        do {
+            System.out.println(cursor.getInt(0) + " " + cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3));
+        }while (cursor.moveToNext());
     }
     List<Company> getAllCompany() {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
