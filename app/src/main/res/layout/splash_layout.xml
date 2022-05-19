@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintCircleRadius="30dip"
+    tools:context=".ui.Splash">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="177dp"
+        android:autoText="false"
+        android:text="@string/laptop_store"
+        android:textColor="@color/purple_500"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_form1"
+        android:layout_width="210dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="106dp"
+        android:text="Login"
+        app:circularflow_defaultRadius="30dip"
+        app:circularflow_radiusInDP="30dip"
+        app:cornerRadius="30dip"
+        app:layout_constraintCircleRadius="30dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/button_form2"
+        android:layout_width="210dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="106dp"
+        android:text="Sign UP"
+        app:circularflow_defaultRadius="30dip"
+        app:circularflow_radiusInDP="30dip"
+        app:cornerRadius="30dip"
+        app:layout_constraintCircleRadius="30dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
