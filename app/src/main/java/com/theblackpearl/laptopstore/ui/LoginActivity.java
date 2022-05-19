@@ -8,9 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.theblackpearl.laptopstore.MainActivity;
 import com.theblackpearl.laptopstore.R;
+import com.theblackpearl.laptopstore.Services;
 import com.theblackpearl.laptopstore.dataManagement.DataBaseHelper;
 import com.theblackpearl.laptopstore.models.User;
+import com.theblackpearl.laptopstore.ui.admin.AdminMenu;
+import com.theblackpearl.laptopstore.ui.user.UserMenu;
 
 public class LoginActivity extends AppCompatActivity {
     EditText username , password;
@@ -47,10 +51,19 @@ public class LoginActivity extends AppCompatActivity {
                 user.setUserName(userdata);
                 user.setPassword(passwordData);
                 try {
-                    int state = checkData(user);
+                    int state = Services.login(user , getApplicationContext());
                     if(state == 0 || state == 1 )
                     {
-
+                      if(state == 0)
+                      {
+                          Intent intent = new Intent(LoginActivity.this, AdminMenu.class);
+                          startActivity(intent);
+                          finish();
+                      }else{
+                          Intent intent = new Intent(LoginActivity.this, UserMenu.class);
+                          startActivity(intent);
+                          finish();
+                      }
                     }else{
                         Snackbar.make(v , "Wrong Credentials" , Snackbar.LENGTH_LONG).show();
                     }
@@ -62,21 +75,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    int checkData(User user){
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
-        System.out.println(user.getUserName());
-        System.out.println(user.getPassword());
-        if(user.getUserName().equals("admin") && user.getPassword().equals("admin"))
-        {
-            return  0;
-        }
-        User user1 = dataBaseHelper.getUser(user);
-        if(user1 != null)
-        {
-            return 1;
-        }
-        else{
-            return 2;
-        }
-    }
+
 }

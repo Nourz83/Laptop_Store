@@ -128,7 +128,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
     }
 
-    public User getUser(User user) {
+    public boolean getUser(User user , Context context) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String[] args = {user.getUserName().toString() , user.getPassword().toString()};
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Users where username = ? and password = ?", args );
@@ -138,10 +138,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //System.out.println("SELECT * FROM " + userTable + " WHERE username = " + user.getName() + " AND password = " + user.getPassword());
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            User user1 = new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
-            return user1;
+           // User user1 = new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            user.setName(cursor.getString(3));
+            new SharedPreferenceHelper(context).setUser(user);
+            return true;
         } else {
-            return null;
+            return false;
         }
     }
     public void printAllUser()

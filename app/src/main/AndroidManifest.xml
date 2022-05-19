@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LaptopStore">
         <activity
+            android:name=".ui.user.UserMenu"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminMenu"
+            android:exported="false" />
+        <activity
             android:name=".ui.SignUpActivity"
             android:exported="false" />
         <activity
